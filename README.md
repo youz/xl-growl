@@ -27,7 +27,7 @@ growlパッケージより、以下の3つの関数がexportされています�
 
     * icon -- 通知に表示するアイコンのファイルパス or URL。
               省略時は[xyzzy wiki](http://xyzzy.s53.xrea.com/wiki/)のロゴ
-              (data-uriスキームで指定)になります。
+              (Data URI schemeで指定)になります。
 
     * priority -- 通知の重要度(-2～2の範囲の整数)。
               省略時は0になります。

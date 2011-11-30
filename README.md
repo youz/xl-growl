@@ -1,6 +1,12 @@
 # xl-growl
 GNTP (Growl Network Transport Protocol) Client Library for xyzzy
 
+[Growl for Windows](http://www.growlforwindows.com/gfw/default.aspx)へ
+通知を送信する機能を提供します。
+[Growl for Linux](https://github.com/mattn/growl-for-linux)への送信も
+一部機能を除いて可能です。
+
+
 ## Install
 - NetInstallerをよりインストール
  
@@ -40,7 +46,7 @@ growlパッケージより、以下の3つの関数がexportされています�
     (title text url &key host name icon priority sticky)
 
     URLコールバック付き通知。
-    通知をクリックすると指定URLがシステム標準のWEBブラウザで表示されます。
+    通知をクリックすると指定したURLがシステム標準のWEBブラウザで表示されます。
 
 - notify-with-socket-callback
     (title text context context-type
@@ -48,6 +54,7 @@ growlパッケージより、以下の3つの関数がexportされています�
     
     ソケットコールバック付き通知。
     通知へのアクションに応じてコールバックを実行します。
+    ※ Growl for Linuxは現在ソケットコールバックをサポートしていません。
 
     * context -- 任意の文字列。コールバック関数に渡されます。
     * context-type -- 任意の文字列。コールバック関数に渡されます。
@@ -56,13 +63,13 @@ growlパッケージより、以下の3つの関数がexportされています�
     * ontimeout -- タイムアウトで閉じた時に実行されるコールバック関数。
     * handler -- 上記3つを使わず、全てのアクションで同一の処理をする場合に使用。
 
-    コールバックには、以下のレスポンスデータがキーワード引数で渡されます。
+        コールバックには、以下のレスポンスデータがキーワード引数で渡されます。
 
-    - :result -- アクション ("CLICK" or "CLOSE" or "TIMEDOUT")
-    - :timestamp -- 時刻
-    - :name -- 通知時に指定した通知アプリケーション名
-    - :context -- 通知時に指定したcontext
-    - :context-type -- 通知時に指定したcontext-type
+        * result -- アクション ("CLICK" or "CLOSE" or "TIMEDOUT")
+        * timestamp -- 時刻
+        * name -- 通知時に指定した通知アプリケーション名
+        * context -- 通知時に指定したcontext
+        * context-type -- 通知時に指定したcontext-type
 
 
 GNTPの仕様については

@@ -173,11 +173,11 @@
 	   (if handler
 	       (apply handler data)
 	     (cond ((string-match "CLICKED\\|CLICK" result)
-		    (apply onclick data))
+		    (when onclick (apply onclick data)))
 		   ((string-match "CLOSED\\|CLOSE" result)
-		    (apply onclose data))
+		    (when onclose (apply onclose data)))
 		   ((string-match "TIMEDOUT\\|TIMEOUT" result)
-		    (apply ontimeout data))
+		    (when ontimeout (apply ontimeout data)))
 		   (t (error "GNTP Callback Unknown Result~{~%~A~^: ~A~}" data))))
 	   )))
     (send/callback host "NOTIFY" "NONE"
